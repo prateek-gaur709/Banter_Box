@@ -24,25 +24,6 @@ mongoose
     console.log(err.message);
   });
 
-//db connect using async await
-
-// mongoose.set('strictQuery', false);
-
-// const connectDB = async () => {
-//   try {
-//     const conn = await mongoose.connect(process.env.MONGODB_URI, {
-//       useNewURLParser: true,
-//       useUnifiedTopology: true,
-//     });
-//     console.log(`MongoDB Connected `);
-//   } catch (error) {
-//     console.log(`Error : ${error.message}`);
-//     process.exit();
-//   }
-// };
-
-// connectDB();
-
 const server = app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
