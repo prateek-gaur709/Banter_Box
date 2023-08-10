@@ -24,6 +24,12 @@ const Register = () => {
     confirmPassword: '',
   });
 
+  useEffect(() => {
+    if (localStorage.getItem('banterBox-user')) {
+      navigate('/'); //to chat container
+    }
+  }, []);
+
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };

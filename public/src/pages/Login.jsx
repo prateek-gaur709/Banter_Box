@@ -36,6 +36,14 @@ const Login = () => {
     return true;
   };
 
+  //redirect to chat page if localstaorage has the login user
+
+  useEffect(() => {
+    if (localStorage.getItem('banterBox-user')) {
+      navigate('/'); //to chat container
+    }
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     // console.log('abcd');
@@ -54,9 +62,8 @@ const Login = () => {
       }
       if (data.status === true) {
         localStorage.setItem('banterBox-user', JSON.stringify(data.user));
+        navigate('/'); //to chat container
       }
-
-      navigate('/'); //to chat container
     }
   };
 

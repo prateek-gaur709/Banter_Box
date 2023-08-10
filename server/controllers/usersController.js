@@ -54,10 +54,29 @@ module.exports.login = async (req, res, next) => {
       });
     }
 
-    //returns username,email,password
+    //returns user
     delete user.password;
     return res.json({ status: true, user });
   } catch (err) {
     next(err);
+  }
+};
+
+module.exports.setAvatar = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const avatarImage = req.body.image;
+
+    const userData = await User.findByIdAndUpdate(userId, {
+      isAvatarImageSet: true,
+      avatarImage,
+    });
+
+    res.json({
+      isSet: userData.isAvatarImageSet,
+      image: userData.avatarImage,
+    });
+  } catch (ex) {
+    next(ex);
   }
 };
